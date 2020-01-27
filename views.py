@@ -5,10 +5,11 @@ from pyramid.response import Response
 from pyramid.view import view_config
 
 
-# First view, available at http://localhost:6543/
+# First view, available at http://localhost:8080/
 @view_config(route_name='home')
-def home_view(request):
-    return Response('<p>Visit <a href="/howdy?name=lisa">hello</a></p>')
+def hello_world(request):
+    body = '<h1>Hi %(first)s %(last)s!</h1>' % request.matchdict
+    return Response(body)
 
 
 # /howdy?name=alice which links to the next view
